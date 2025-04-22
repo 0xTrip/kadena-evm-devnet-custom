@@ -5,13 +5,17 @@ node_modules
 /cache
 /artifacts
 
-# TypeChain files
-/typechain
-/typechain-types
-
 # solidity-coverage files
 /coverage
 /coverage.json
 
 # Hardhat Ignition default folder for deployments against a local node
 ignition/deployments/chain-31337
+
+# Ignore local and hardhat deployment directories
+**/chainweb_hardhat*
+**/chainweb_localhost*
+
+# Specific deployment files to ignore
+contracts/deployments/chainweb_hardhat*/ThrottledFaucet.json
+contracts/deployments/chainweb_localhost*/ThrottledFaucet.json
