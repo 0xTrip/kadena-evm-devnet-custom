@@ -1,7 +1,8 @@
-# Kadena EVM Faucet Contract
+# Kadena EVM Test Repo
 
-This is the faucet smart contract. It dispenses native token to a receipient address. A faucet wallet pays for the gas (handled in the dApp). The recipient does not pay for the gas. The ThrottledFaucet contract keeps track of each user's request time and reverts if a user tries to request tokens before the cooldown period has elapsed.
+This is custom hardhat implementation, connecting to two deployed devnet chains. 
 
+It includes the faucet smart contract, with other contracts coming soon.
 ## Setup
 
 First, install the dependancies with
@@ -9,6 +10,11 @@ First, install the dependancies with
 npm install
 ```
 The .env.example file is set up with a funded account already. To use this, simply remove ".example" from the file name. Your file should now just be named ".env".
+
+## Faucet Contract
+
+Dispenses native tokens to a receipient address. The faucet wallet pays for the gas (handled in the dApp). The recipient does not pay for the gas. The ThrottledFaucet contract keeps track of each user's request time and reverts if a user tries to request tokens before the cooldown period has elapsed.
+
 
 ## Contract Deployment
 
