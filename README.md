@@ -28,7 +28,7 @@ To deploy it to external chainweb nodes equivalent to hardhat localhost, first r
 npx haradhat node
 
 ```
-in a terminal.  In a separate terminal, run
+In a separate terminal, run
 
 ```
 npx hardhat run scripts/deploy-faucet.js --chainweb localhost
