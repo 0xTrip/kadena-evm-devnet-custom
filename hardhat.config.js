@@ -1,3 +1,4 @@
+require('https').globalAgent.options.rejectUnauthorized = false;
 require("@nomicfoundation/hardhat-toolbox");
 require("@kadena/hardhat-chainweb");
 require("dotenv").config();

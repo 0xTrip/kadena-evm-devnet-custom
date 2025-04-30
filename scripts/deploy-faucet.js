@@ -174,7 +174,7 @@ async function main() {
         );
       }
 
-      // Create deployment JSON
+      // Create deployment JSON NOTE: UPDATE FOR GAS USAGE
       const deploymentData = {
         chain: chainId,
         address: contractAddress,
