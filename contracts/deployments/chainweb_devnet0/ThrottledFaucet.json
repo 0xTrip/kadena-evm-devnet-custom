@@ -1,0 +1,10 @@
+{
+  "chain": 0,
+  "address": "0x96dFA737712a48FD1Dfa3c6225778d6e34433C6a",
+  "deployer": "0x8849BAbdDcfC1327Ad199877861B577cEBd8A7b6",
+  "params": {
+    "cooldownPeriod": "86400",
+    "nativeTokenAmount": "20000000000000000000"
+  },
+  "deployedAt": "2025-04-30T10:55:09.491Z"
+}

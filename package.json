@@ -16,7 +16,7 @@
     "hardhat": "^2.23.0"
   },
   "dependencies": {
-    "@kadena/hardhat-chainweb": "^1.4.5",
+    "@kadena/hardhat-chainweb": "^1.4.6",
     "dotenv": "^16.5.0"
   }
 }

@@ -1,8 +1,11 @@
 require("@nomicfoundation/hardhat-toolbox");
-require('@kadena/hardhat-chainweb');
-require('dotenv').config();
+require("@kadena/hardhat-chainweb");
+require("dotenv").config();
+const { readFileSync } = require("fs");
 
-
+const devnetAccounts = JSON.parse(
+  readFileSync("./devnet-accounts.json", "utf-8")
+);
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -16,20 +19,18 @@ module.exports = {
       evmVersion: "cancun",
     },
   },
+  defaultChainweb: "devnet",
   chainweb: {
     hardhat: {
       chains: 2,
     },
     devnet: {
-      type: 'external',
       chains: 2,
-      externalHostUrl: 'http://some.domain',
-      precompiles: { // only need if addresses are diferent from default
-        chainwebChainId: '0x0000000000000000000000000000000000000100',
-        spvVerify: '0x0000000000000000000000000000000000000101',
-        create2Proxy: '0x0000000000000000000000000000000000000101',
-      },
+      type: "external",
+      chainIdOffset: 1789,
+      accounts: devnetAccounts.accounts.map((account) => account.privateKey),
+      externalHostUrl:
+        "https://evm-devnet.kadena.network/chainweb/0.0/evm-development",
     },
-
   },
 };
