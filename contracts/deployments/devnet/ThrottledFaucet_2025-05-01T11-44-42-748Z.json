@@ -1,0 +1,16 @@
+{
+  "chain": 1,
+  "address": "0xC240858d90af651802Fc94a9f8fC2A843C6fe83b",
+  "deployer": "0x8849BAbdDcfC1327Ad199877861B577cEBd8A7b6",
+  "params": {
+    "cooldownPeriod": "86400",
+    "nativeTokenAmount": "20000000000000000000"
+  },
+  "gas": {
+    "gasUsed": "862132",
+    "gasPrice": "1000000007",
+    "gasCost": "862132006034924",
+    "gasCostInEther": "0.000862132006034924"
+  },
+  "deployedAt": "2025-05-01T11:44:42.748Z"
+}

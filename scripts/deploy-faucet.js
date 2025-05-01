@@ -4,6 +4,7 @@ const path = require("path");
 const { chainweb, ethers, network } = require("hardhat");
 
 async function main() {
+  console.log(`Network name: ${network.name}`); // Now properly after imports
   console.log(`Deploying ThrottledFaucet`);
   const PRIVATE_KEY =
     process.env.FAUCET_PRIVATE_KEY ||
@@ -11,9 +12,17 @@ async function main() {
   let provider;
   let faucetWallet;
 
-  // Define constructor arguments
-  const cooldownPeriod = process.env.COOLDOWN_PERIOD;
-  const nativeTokenAmount = ethers.parseEther(process.env.NATIVE_TOKEN_AMOUNT);
+  // Define constructor arguments with defaults
+  const cooldownPeriod = process.env.COOLDOWN_PERIOD || "86400";
+  const nativeTokenAmount = ethers.parseEther(
+    process.env.NATIVE_TOKEN_AMOUNT || "20"
+  );
+
+  console.log(
+    `Using parameters: cooldownPeriod=${cooldownPeriod}, nativeTokenAmount=${ethers.formatEther(
+      nativeTokenAmount
+    )} ETH`
+  );
 
   // Create directories if they don't exist
   const deploymentDir = path.join(__dirname, "../contracts/deployments");
@@ -94,6 +103,12 @@ async function main() {
         const [deployer] = await ethers.getSigners();
         console.log(`Faucet deployer address: ${deployer.address}`);
 
+        // Log deployer balance
+        const deployerBalance = await provider.getBalance(deployer.address);
+        console.log(
+          `Deployer balance: ${ethers.formatEther(deployerBalance)} KDA/ETH`
+        );
+
         // Get the contract factory
         const ThrottledFaucet = await ethers.getContractFactory(
           "ThrottledFaucet"
@@ -146,7 +161,6 @@ async function main() {
 
           /* 
           // COMMENTED OUT: Funding section to avoid spending ETH
-          // Calculate amount to send (half of the proportional balance per chain)
           const fundAmount = faucetWalletBalance / BigInt(chainCount * 2);
           const nativeTokenAmountWei = await faucetContract.nativeTokenAmount();
 
